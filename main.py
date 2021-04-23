@@ -43,8 +43,3 @@ def echo_all(message):
 
 
 bot.polling()
-
-
-splitted_text = util.split_string(large_text, 3000)
-for text in splitted_text:
-	tb.send_message(chat_id, text)
