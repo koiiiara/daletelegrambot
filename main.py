@@ -5,6 +5,7 @@
 
 import telebot
 from telebot import util
+import tg_analytic
 
 dict = {}
 with open('outfile.txt', "r") as file:
@@ -18,11 +19,13 @@ bot = telebot.TeleBot("1712576683:AAGVuzdyLyHrtsv0JVK2aQsC2MQsZfMVk7c", parse_mo
 start_text = open("start.txt", "rb").read()
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
+    tg_analytic.statistics( message.from_user.id, message.text)
     bot.send_message(message.from_user.id, start_text, parse_mode= "Markdown")
 
 
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
+    tg_analytic.statistics(message.from_user.id, message.text)
     word = message.text.upper()
     if word not in dict:
         bot.send_message(message.from_user.id, "К сожалению такого слова нет с словаре😔")
