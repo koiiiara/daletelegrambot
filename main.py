@@ -14,7 +14,7 @@ with open('outfile.txt', "r") as file:
             dict[(line.strip().split(":%"))[0].replace(" ", "")] = []
         dict[(line.strip().split(":%"))[0].replace(" ", "")].append((line.strip().split(":%"))[1])
 
-bot = telebot.TeleBot("1712576683:AAGVuzdyLyHrtsv0JVK2aQsC2MQsZfMVk7c", parse_mode=None)
+bot = telebot.TeleBot("TOKEN", parse_mode=None)
 
 start_text = open("start.txt", "rb").read()
 @bot.message_handler(commands=['start', 'help'])
